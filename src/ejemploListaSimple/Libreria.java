@@ -242,7 +242,7 @@ public class Libreria {
 						+ "\n Pulsa [Intro] para continuar.");
 			} else {
 				borrarPantalla();
-				System.out.println(libros[libroSeleccionado - 1].toString());
+				System.out.println(libros..toString());
 				entrada.obtenerString("Pulsa [Intro] para continuar.");
 			}
 		} while (!salir);
