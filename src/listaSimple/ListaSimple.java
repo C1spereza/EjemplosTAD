@@ -95,12 +95,13 @@ public class ListaSimple {
 		if (inicio == null)
 			return false;
 		else {
-			if (tamaño == 1) inicio = null;
+			if (tamaño == 1)
+				inicio = null;
 			else {
-				Nodo nodoAuxiliar=inicio;
-				int posicionAuxiliar=1;
-				while(posicionAuxiliar<this.tamaño-1){
-					nodoAuxiliar=nodoAuxiliar.getSiguiente();
+				Nodo nodoAuxiliar = inicio;
+				int posicionAuxiliar = 1;
+				while (posicionAuxiliar < this.tamaño - 1) {
+					nodoAuxiliar = nodoAuxiliar.getSiguiente();
 					posicionAuxiliar++;
 				}
 				nodoAuxiliar.setSiguiente(null);
@@ -111,11 +112,13 @@ public class ListaSimple {
 
 	}
 
-	public boolean eliminar(int posicion){
-		if(posicion<=0 || posicion>tamaño) return false;
-		else{
-			if(posicion==1) return eliminarPrimero();
-			else{
+	public boolean eliminar(int posicion) {
+		if (posicion <= 0 || posicion > tamaño)
+			return false;
+		else {
+			if (posicion == 1)
+				return eliminarPrimero();
+			else {
 				Nodo nodoAEliminar = inicio.getSiguiente();
 				Nodo nodoAnterior = inicio;
 				posicion = posicion - 2;
@@ -128,6 +131,51 @@ public class ListaSimple {
 				this.tamaño--;
 				return true;
 			}
+		}
+	}
+
+	public boolean esVacia() {
+		return (tamaño == 0) ? true : false;
+	}
+
+	public int buscarPrimero(Nodo n) {
+		Nodo auxiliar = this.inicio;
+		int posicion = 1;
+		boolean encontrado = false;
+		while (auxiliar != null && !encontrado) {
+			if (auxiliar.esIgual(n)) {
+				encontrado = true;
+			} else {
+				auxiliar = auxiliar.getSiguiente();
+				posicion++;
+			}
+		}
+		return (auxiliar == null) ? 0 : posicion;
+
+	}
+
+	public ListaSimple buscarTodos(Nodo n) {
+		Nodo auxiliar = this.inicio;
+		ListaSimple resultado = new ListaSimple();
+		int posicion = 1;
+
+		while (auxiliar != null) {
+			if (auxiliar.esIgual(n)) {
+				resultado.insertarInicio(new Nodo(posicion));
+			}
+			auxiliar = auxiliar.getSiguiente();
+			posicion++;
+
+		}
+		return resultado;
+
+	}
+	public void eleminarTodos(Nodo n){
+		
+		Nodo auxiliar = this.buscarTodos(n).getInicio();
+		while(auxiliar!=null){
+			this.eliminar(auxiliar.getDato());
+			auxiliar=auxiliar.getSiguiente();
 		}
 	}
 }
