@@ -8,16 +8,16 @@ public class Test {
 		ListaSimple lista = new ListaSimple();
 		// System.out.println(lista.eliminarUltimo());
 
-		lista.insertarFinal(new Nodo(1));
-		lista.insertarFinal(new Nodo(2));
-		lista.insertarFinal(new Nodo(1));
-		lista.insertarFinal(new Nodo(23));
-		lista.insertarFinal(new Nodo(1));
-		lista.insertarFinal(new Nodo(23));
-		lista.insertarFinal(new Nodo(1));
+		lista.insertarFinal(new NodoEntero(1));
+		lista.insertarFinal(new NodoEntero(2));
+		lista.insertarFinal(new NodoEntero(1));
+		lista.insertarFinal(new NodoEntero(23));
+		lista.insertarFinal(new NodoEntero(1));
+		lista.insertarFinal(new NodoEntero(23));
+		lista.insertarFinal(new NodoEntero(1));
 		
 		System.out.println(lista.toString());
-		lista.eleminarTodos(new Nodo(23));
+		lista.eleminarTodos(new NodoEntero(23));
 		System.out.println(lista.toString());
 		
 	}

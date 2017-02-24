@@ -1,7 +1,7 @@
-package listaSimple;
+package ejemploListaSimple;
 
 public class ListaSimple {
-	private NodoEntero inicio;
+	private NodoLibro inicio;
 	private int tamaño;
 
 	public ListaSimple() {
@@ -9,11 +9,11 @@ public class ListaSimple {
 		tamaño = 0;
 	}
 
-	public NodoEntero getInicio() {
+	public NodoLibro getInicio() {
 		return inicio;
 	}
 
-	public void setInicio(NodoEntero inicio) {
+	public void setInicio(NodoLibro inicio) {
 		this.inicio = inicio;
 	}
 
@@ -27,7 +27,7 @@ public class ListaSimple {
 
 	public String toString() {
 		String salida = "La lista contiene: \n";
-		NodoEntero auxiliar = inicio;
+		NodoLibro auxiliar = inicio;
 		while (auxiliar != null) {
 			salida = salida + auxiliar.toString() + " ";
 			auxiliar = auxiliar.getSiguiente();
@@ -36,18 +36,18 @@ public class ListaSimple {
 		return salida;
 	}
 
-	public void insertarInicio(NodoEntero n) {
+	public void insertarInicio(NodoLibro n) {
 		n.setSiguiente(inicio);
 		inicio = n;
 		tamaño++;
 
 	}
 
-	public void insertarFinal(NodoEntero nodo) {
+	public void insertarFinal(NodoLibro nodo) {
 		if (inicio == null)
 			insertarInicio(nodo);
 		else {
-			NodoEntero actual = inicio;
+			NodoLibro actual = inicio;
 			while (actual.getSiguiente() != null) {
 				actual = actual.getSiguiente();
 			}
@@ -56,7 +56,7 @@ public class ListaSimple {
 		}
 	}
 
-	public boolean insertar(NodoEntero nodo, int posicion) {
+	public boolean insertar(NodoLibro nodo, int posicion) {
 		if (posicion > this.tamaño + 1 || posicion < 1) {
 			return false;
 		} else {
@@ -65,8 +65,8 @@ public class ListaSimple {
 			else if (posicion == tamaño + 1)
 				insertarFinal(nodo);
 			else {
-				NodoEntero nodoAuxiliar = inicio.getSiguiente();
-				NodoEntero nodoAnterior = inicio;
+				NodoLibro nodoAuxiliar = inicio.getSiguiente();
+				NodoLibro nodoAnterior = inicio;
 				posicion = posicion - 2;
 				while (posicion > 0) {
 					nodoAnterior = nodoAuxiliar;
@@ -98,7 +98,7 @@ public class ListaSimple {
 			if (tamaño == 1)
 				inicio = null;
 			else {
-				NodoEntero nodoAuxiliar = inicio;
+				NodoLibro nodoAuxiliar = inicio;
 				int posicionAuxiliar = 1;
 				while (posicionAuxiliar < this.tamaño - 1) {
 					nodoAuxiliar = nodoAuxiliar.getSiguiente();
@@ -119,8 +119,8 @@ public class ListaSimple {
 			if (posicion == 1)
 				return eliminarPrimero();
 			else {
-				NodoEntero nodoAEliminar = inicio.getSiguiente();
-				NodoEntero nodoAnterior = inicio;
+				NodoLibro nodoAEliminar = inicio.getSiguiente();
+				NodoLibro nodoAnterior = inicio;
 				posicion = posicion - 2;
 				while (posicion > 0) {
 					nodoAnterior = nodoAEliminar;
@@ -138,8 +138,8 @@ public class ListaSimple {
 		return (tamaño == 0) ? true : false;
 	}
 
-	public int buscarPrimero(NodoEntero n) {
-		NodoEntero auxiliar = this.inicio;
+	public int buscarPrimero(NodoLibro n) {
+		NodoLibro auxiliar = this.inicio;
 		int posicion = 1;
 		boolean encontrado = false;
 		while (auxiliar != null && !encontrado) {
@@ -152,30 +152,5 @@ public class ListaSimple {
 		}
 		return (auxiliar == null) ? 0 : posicion;
 
-	}
-
-	public ListaSimple buscarTodos(NodoEntero n) {
-		NodoEntero auxiliar = this.inicio;
-		ListaSimple resultado = new ListaSimple();
-		int posicion = 1;
-
-		while (auxiliar != null) {
-			if (auxiliar.esIgual(n)) {
-				resultado.insertarInicio(new NodoEntero(posicion));
-			}
-			auxiliar = auxiliar.getSiguiente();
-			posicion++;
-
-		}
-		return resultado;
-
-	}
-	public void eleminarTodos(NodoEntero n){
-		
-		NodoEntero auxiliar = buscarTodos(n).getInicio();
-		while(auxiliar!=null){
-			eliminar(auxiliar.getDato());
-			auxiliar=auxiliar.getSiguiente();
-		}
 	}
 }

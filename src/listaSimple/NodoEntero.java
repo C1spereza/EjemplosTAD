@@ -1,10 +1,10 @@
 package listaSimple;
 
-public class Nodo {
+public class NodoEntero {
 	private int dato;
-	private Nodo siguiente;
+	private NodoEntero siguiente;
 	
-	public Nodo(int i){
+	public NodoEntero(int i){
 		this.dato 		= i;
 		this.siguiente	= null;
 	}
@@ -15,14 +15,14 @@ public class Nodo {
 	public void setDato(int dato) {
 		this.dato = dato;
 	}
-	public Nodo getSiguiente() {
+	public NodoEntero getSiguiente() {
 		return siguiente;
 	}
-	public void setSiguiente(Nodo siguiente) {
+	public void setSiguiente(NodoEntero siguiente) {
 		this.siguiente = siguiente;
 	}
 	
-	public boolean esIgual(Nodo n){
+	public boolean esIgual(NodoEntero n){
 		return (dato==n.getDato())? true:false;
 	}
 	
