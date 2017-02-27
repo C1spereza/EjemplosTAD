@@ -29,5 +29,9 @@ public class Nodo {
 	public void setDerecha(Nodo derecha) {
 		this.derecha = derecha;
 	}
+	
+	public String toString(){
+		return Integer.toString(dato);
+	}
 		
 }
