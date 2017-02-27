@@ -15,6 +15,7 @@ public class Test {
 		
 		lista.insertarCola(new Nodo(2));
 		lista.insertarCola(new Nodo(3));
+		lista.insertarPosicion(new Nodo(8), 3);
 		lista.insertarCola(new Nodo(4));
 		lista.insertarInicio(new Nodo(0));
 		System.out.println(lista.toString());

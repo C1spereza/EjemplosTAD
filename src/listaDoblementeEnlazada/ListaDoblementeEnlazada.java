@@ -1,5 +1,7 @@
 package listaDoblementeEnlazada;
 
+import listaSimple.NodoEntero;
+
 public class ListaDoblementeEnlazada {
 	private Nodo cabeza;
 	private Nodo cola;
@@ -34,7 +36,32 @@ public class ListaDoblementeEnlazada {
 			tamaño++;
 		}
 	}
-	
+	public boolean insertarPosicion(Nodo nodo,int posicion){
+		if (posicion > tamaño + 1 || posicion < 1) {
+			return false;
+		} else {
+			if (posicion == 1)
+				insertarInicio(nodo);
+			else if (posicion == tamaño + 1)
+				insertarCola(nodo);
+			else {
+				Nodo nodoAuxiliar = cabeza.getDerecha();
+				Nodo nodoAnterior = cabeza;
+				posicion = posicion - 2;
+				while (posicion > 0) {
+					nodoAnterior = nodoAuxiliar;
+					nodoAuxiliar = nodoAuxiliar.getDerecha();
+					posicion--;
+				}
+				nodo.setDerecha(nodoAuxiliar);
+				nodo.setIzquierda(nodoAnterior);
+				nodoAnterior.setDerecha(nodo);
+				nodoAuxiliar.setIzquierda(nodo);
+				tamaño++;
+			}
+			return true;
+		}
+	}
 	public Nodo getCabeza() {
 		return cabeza;
 	}
