@@ -61,6 +61,7 @@ public class Libreria {
 		while (auxiliar != null) {
 			System.out.printf("%s- %s%n", (i), auxiliar.getLibro().getTitulo());
 			auxiliar = auxiliar.getSiguiente();
+			i++;
 		}
 		System.out.println("-----------------------------");
 		System.out.println("0- Salir");

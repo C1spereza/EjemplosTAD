@@ -157,7 +157,8 @@ public class ListaSimple {
 		NodoLibro auxiliar=inicio;
 		posicion--;
 		while(posicion>0){
-			auxiliar=auxiliar.getSiguiente();			
+			auxiliar=auxiliar.getSiguiente();
+			posicion--;
 		}
 		return auxiliar;
 	}
