@@ -153,4 +153,12 @@ public class ListaSimple {
 		return (auxiliar == null) ? 0 : posicion;
 
 	}
+	public NodoLibro obtenerNodoLibro(int posicion){
+		NodoLibro auxiliar=inicio;
+		posicion--;
+		while(posicion>0){
+			auxiliar=auxiliar.getSiguiente();			
+		}
+		return auxiliar;
+	}
 }

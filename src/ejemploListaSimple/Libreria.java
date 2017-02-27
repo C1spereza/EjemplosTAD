@@ -110,14 +110,13 @@ public class Libreria {
 			libroSeleccionado = entrada.obtenerEntero("Que libro quiere modificar ?");
 			if (libroSeleccionado == 0)
 				salir = true;
-			else if (libroSeleccionado < 0 || libroSeleccionado > libros.length) {
-				entrada.obtenerString("Valor incorrecto!.\nDebes introducir un valor entre 0 y " + libros.length
+			else if (libroSeleccionado < 0 || libroSeleccionado > libros.getTamaño()) {
+				entrada.obtenerString("Valor incorrecto!.\nDebes introducir un valor entre 0 y " + libros.getTamaño()
 						+ "\n Pulsa [Intro] para continuar.");
 			} else {
 				borrarPantalla();
-				System.out.println("Libro seleccionado [" + libros[libroSeleccionado - 1].getTitulo() + "].");
-				libros[libroSeleccionado - 1]
-						.setTitulo(entrada.obtenerString("Introduce el nuevo titulo para el libro seleccionado:"));
+				System.out.println("Libro seleccionado [" + libros.obtenerNodoLibro(libroSeleccionado).getLibro().getTitulo() + "].");
+				libros.obtenerNodoLibro(libroSeleccionado).getLibro().setTitulo(entrada.obtenerString("Introduce el nuevo titulo para el libro seleccionado:"));
 				entrada.obtenerString("Titulo del libro actualizado.\nPulsa [Intro] para continuar.");
 			}
 		} while (!salir);
@@ -135,14 +134,13 @@ public class Libreria {
 			libroSeleccionado = entrada.obtenerEntero("Que libro quiere modificar ?");
 			if (libroSeleccionado == 0)
 				salir = true;
-			else if (libroSeleccionado < 0 || libroSeleccionado > libros.length) {
-				entrada.obtenerString("Valor incorrecto!.\nDebes introducir un valor entre 0 y " + libros.length
+			else if (libroSeleccionado < 0 || libroSeleccionado > libros.getTamaño()) {
+				entrada.obtenerString("Valor incorrecto!.\nDebes introducir un valor entre 0 y " + libros.getTamaño()
 						+ "\n Pulsa [Intro] para continuar.");
 			} else {
 				borrarPantalla();
-				System.out.println("Libro seleccionado [" + libros[libroSeleccionado - 1].getTitulo() + "].");
-				libros[libroSeleccionado - 1]
-						.setAutor(entrada.obtenerString("Introduce el nuevo autor para el libro seleccionado:"));
+				System.out.println("Libro seleccionado [" + libros.obtenerNodoLibro(libroSeleccionado).getLibro().getTitulo() + "].");
+				libros.obtenerNodoLibro(libroSeleccionado).getLibro().setAutor(entrada.obtenerString("Introduce el nuevo autor para el libro seleccionado:"));
 				entrada.obtenerString("Autor del libro actualizado.\nPulsa [Intro] para continuar.");
 			}
 		} while (!salir);
@@ -160,13 +158,13 @@ public class Libreria {
 			libroSeleccionado = entrada.obtenerEntero("Que libro quiere modificar ?");
 			if (libroSeleccionado == 0)
 				salir = true;
-			else if (libroSeleccionado < 0 || libroSeleccionado > libros.length) {
-				entrada.obtenerString("Valor incorrecto!.\nDebes introducir un valor entre 0 y " + libros.length
+			else if (libroSeleccionado < 0 || libroSeleccionado > libros.getTamaño()) {
+				entrada.obtenerString("Valor incorrecto!.\nDebes introducir un valor entre 0 y " + libros.getTamaño()
 						+ "\n Pulsa [Intro] para continuar.");
 			} else {
 				borrarPantalla();
-				System.out.println("Libro seleccionado [" + libros[libroSeleccionado - 1].getTitulo() + "].");
-				libros[libroSeleccionado - 1].setTitulo(
+				System.out.println("Libro seleccionado [" + libros.obtenerNodoLibro(libroSeleccionado).getLibro().getTitulo() + "].");
+				libros.obtenerNodoLibro(libroSeleccionado).getLibro().setTitulo(
 						entrada.obtenerString("Introduce la cantidad de ejemplares para el libro seleccionado:"));
 				entrada.obtenerString("Cantidad de ejemplares del libro actualizado.\nPulsa [Intro] para continuar.");
 			}
@@ -185,12 +183,12 @@ public class Libreria {
 			libroSeleccionado = entrada.obtenerEntero("Que libro se va a prestar ?");
 			if (libroSeleccionado == 0)
 				salir = true;
-			else if (libroSeleccionado < 0 || libroSeleccionado > libros.length) {
-				entrada.obtenerString("Valor incorrecto!.\nDebes introducir un valor entre 0 y " + libros.length
+			else if (libroSeleccionado < 0 || libroSeleccionado > libros.getTamaño()) {
+				entrada.obtenerString("Valor incorrecto!.\nDebes introducir un valor entre 0 y " + libros.getTamaño()
 						+ "\n Pulsa [Intro] para continuar.");
 			} else {
 				borrarPantalla();
-				if (libros[libroSeleccionado - 1].prestamo() == true)
+				if (libros.obtenerNodoLibro(libroSeleccionado).getLibro().prestamo() == true)
 					System.out.println("Libro prestado correctamente!.");
 				else
 					System.out.println("El libro no puede ser prestado. Consulte disponibilidad.");
@@ -211,12 +209,12 @@ public class Libreria {
 			libroSeleccionado = entrada.obtenerEntero("Que libro se va a devolver ?");
 			if (libroSeleccionado == 0)
 				salir = true;
-			else if (libroSeleccionado < 0 || libroSeleccionado > libros.length) {
-				entrada.obtenerString("Valor incorrecto!.\nDebes introducir un valor entre 0 y " + libros.length
+			else if (libroSeleccionado < 0 || libroSeleccionado > libros.getTamaño()) {
+				entrada.obtenerString("Valor incorrecto!.\nDebes introducir un valor entre 0 y " + libros.getTamaño()
 						+ "\n Pulsa [Intro] para continuar.");
 			} else {
 				borrarPantalla();
-				if (libros[libroSeleccionado - 1].devolucion() == true)
+				if (libros.obtenerNodoLibro(libroSeleccionado).getLibro().devolucion() == true)
 					System.out.println("Libro devuelto correctamente!.");
 				else
 					System.out.println("El libro no puede ser devuelto. Consulte si hay prestamos.");
@@ -242,7 +240,7 @@ public class Libreria {
 						+ "\n Pulsa [Intro] para continuar.");
 			} else {
 				borrarPantalla();
-				System.out.println(libros..toString());
+				System.out.println(libros.obtenerNodoLibro(libroSeleccionado).getLibro().toString());
 				entrada.obtenerString("Pulsa [Intro] para continuar.");
 			}
 		} while (!salir);
